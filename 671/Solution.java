@@ -2,11 +2,9 @@ import java.util.*;
 
 class Solution {
     public int findSecondMinimumValue(TreeNode root) {
-        PriorityQueue<Integer> pg = new PriorityQueue<>();
+        PriorityQueue<Integer> pg = new PriorityQueue<>(2, Comparator.reverseOrder());
         travese(root, pg);
-        pg.poll();
-        Integer ans = pg.poll();
-        return (ans == null) ? -1 : ans;
+        return (pg.size() < 2) ? -1 : pg.poll();
     }
 
     private void travese(TreeNode node, PriorityQueue<Integer> pg) {
@@ -15,6 +13,9 @@ class Solution {
         }
         if (!pg.contains(node.val)) {
             pg.add(node.val);
+            if (pg.size() > 2) {
+                pg.poll();
+            }
         }
         travese(node.left, pg);
         travese(node.right, pg);
