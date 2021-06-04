@@ -2,13 +2,7 @@ import java.util.*;
 
 class Solution {
     public boolean checkOnesSegment(String s) {
-        int count = 0;
-        for (String segment : s.split("0")) {
-            if (!segment.equals("")) {
-                count++;
-            }
-        }
-        return count == 1;
+        return s.split("0").length == 1;
     }
 
     public static void main(String args[]) {
