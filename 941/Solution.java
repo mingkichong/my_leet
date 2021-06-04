@@ -6,25 +6,18 @@ class Solution {
             return false;
         }
         int peakIndex = 0;
-        for (int i = 1; i < arr.length; i++) {
-            if (arr[i] == arr[i - 1]) {
-                return false;
-            }
-            if (arr[i - 1] > arr[i]) {
-                peakIndex = i - 1;
+        int left = 0, right = arr.length - 1;
+        for (; left < arr.length - 1; left++) {
+            if (arr[left] >= arr[left + 1]) {
                 break;
             }
         }
-        // System.out.println(peakIndex);
-        if (peakIndex == 0) {
-            return false;
-        }
-        for (int j = peakIndex + 1; j < arr.length; j++) {
-            if (arr[j] == arr[j - 1] || arr[j - 1] < arr[j]) {
-                return false;
+        for (; right > 0; right--) {
+            if (arr[right - 1] <= arr[right]) {
+                break;
             }
         }
-        return true;
+        return left == right && left != 0 & right != arr.length - 1;
     }
 
     public static void main(String args[]) {
@@ -36,10 +29,9 @@ class Solution {
         System.out.println(s.validMountainArray(new int[] {5, 4, 3, 2, 1, 0})); // false
         System.out.println(s.validMountainArray(new int[] {1, 1, 1, 1})); // false
         System.out.println(s.validMountainArray(new int[] {5, 4, 3, 2, 1, 2, 3, 4, 5})); // false
-        System.out.println(s.validMountainArray(new int[] {1, 2, 3, 4, 5, 4, 3, 2, 1})); // false
+        System.out.println(s.validMountainArray(new int[] {1, 2, 3, 4, 5, 4, 3, 2, 1})); // true
         System.out.println(s.validMountainArray(new int[] {1, 2, 3, 4, 0, 4, 3, 2, 1})); // false
-        System.out.println(s.validMountainArray(new int[] {1, 100, 1})); // false
-
+        System.out.println(s.validMountainArray(new int[] {1, 100, 1})); // true
     }
 }
 
