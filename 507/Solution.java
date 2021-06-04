@@ -5,12 +5,7 @@ class Solution {
         if (num == 1) {
             return false;
         }
-        Set<Integer> divisors = getDivisors(num);
-        int sum = 0;
-        for (int divisor : divisors) {
-            sum += divisor;
-        }
-        return sum == num;
+        return num == getDivisors(num).stream().mapToInt(Integer::intValue).sum();
     }
 
     private Set<Integer> getDivisors(int num) {
