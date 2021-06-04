@@ -2,14 +2,12 @@ import java.util.*;
 
 class Solution {
     public boolean checkIfExist(int[] arr) {
-        HashMap<Integer, Integer> map = new HashMap<>();
+        Set<Integer> set = new HashSet<>();
         for (int i = 0; i < arr.length; i++) {
-            map.put(arr[i] * 2, i);
-        }
-        for (int i = 0; i < arr.length; i++) {
-            if (map.containsKey(arr[i]) && map.get(arr[i]) != i) {
+            if (set.contains(arr[i] * 2) || (arr[i] % 2 == 0 && set.contains(arr[i] / 2))) {
                 return true;
             }
+            set.add(arr[i]);
         }
         return false;
     }
@@ -22,4 +20,3 @@ class Solution {
         System.out.println(s.checkIfExist(new int [] { 0 })); // false
     }
 }
-
