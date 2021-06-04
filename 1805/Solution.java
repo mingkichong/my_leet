@@ -29,6 +29,7 @@ class Solution {
         System.out.println(s.numDifferentIntegers("leet1234code234")); // 2
         System.out.println(s.numDifferentIntegers("a1b01c001")); // 1
         System.out.println(s.numDifferentIntegers("abcdefg")); // 0
-        System.out.println(s.numDifferentIntegers("1234567890987654321")); // 0
+        System.out.println(s.numDifferentIntegers("1234567890987654321")); // 1
+        System.out.println(s.numDifferentIntegers("0000001a1b000000000000001")); // 1
     }
 }
